@@ -211,6 +211,7 @@ const testimonials = [
   }
   .hero__actions {
     display: flex;
+    flex-wrap: wrap;
     gap: 14px;
   }
   .hero__media {
@@ -409,9 +410,22 @@ const testimonials = [
   }
 
   @media (max-width: 900px) {
+    .hero {
+      padding-top: 40px;
+    }
     .hero__grid,
     .story__grid {
       grid-template-columns: 1fr;
+    }
+    .hero__media {
+      overflow: visible;
+    }
+    .hero__badge {
+      width: 88px;
+      height: 88px;
+      font-size: 0.68rem;
+      bottom: -14px;
+      right: 8px;
     }
     .features__grid {
       grid-template-columns: repeat(2, 1fr);
@@ -428,6 +442,33 @@ const testimonials = [
     }
     .hero__copy h1 {
       font-size: 2.4rem;
+    }
+    .hero__actions .btn {
+      flex: 1 1 auto;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero__copy h1 {
+      font-size: 1.9rem;
+    }
+    .hero__badge {
+      width: 76px;
+      height: 76px;
+      font-size: 0.6rem;
+      right: 4px;
+      bottom: -10px;
+    }
+    .section-heading h2 {
+      font-size: 1.6rem;
+    }
+    .features__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .community__grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>

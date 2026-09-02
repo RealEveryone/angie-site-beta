@@ -39,3 +39,19 @@ const {
     <Footer />
   </body>
 </html>
+
+<style is:global>
+  /* Safety net: stops any stray element (badges, absolutely-positioned
+     decorations, fixed-width inputs, etc.) from creating horizontal
+     scroll on mobile. Doesn't fix the source, just contains it. */
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+</style>

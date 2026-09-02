@@ -1,0 +1,178 @@
+---
+// src/components/Navbar.astro
+const links = [
+  { label: "Магазин", href: "/shop" }, /*[cite: 2] */
+  { label: "Вкусове", href: "/flavors" }, /*[cite: 2] */
+  { label: "Мъфини по поръчка", href: "/custom-muffins" }, /*[cite: 2] */
+  { label: "За нас", href: "/about" }, /*[cite: 2] */
+  { label: "Събития", href: "/events" }, /*[cite: 2] */
+  { label: "Контакти", href: "/contact" }, /*[cite: 2] */
+];
+---
+
+<div class="announcement">
+  <p>МЪФИНИ. ПО ВСЯКО ВРЕМЕ. НАВСЯКЪДЕ. ♥[cite: 2]</p>
+</div>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a href="/" class="logo">
+      <span class="logo__meta"></span>
+      <span class="logo__script">muffin</span>
+      <span class="logo__meta"></span>
+      <span class="logo__word">land</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Основна навигация">
+      {links.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
+
+    <div class="nav__icons">
+      <button aria-label="Търсене" class="icon-btn">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <button aria-label="Акаунт" class="icon-btn">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c1.6-3.6 4.8-5.5 8-5.5s6.4 1.9 8 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <a href="/cart" class="icon-btn cart" aria-label="Количка">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.2 12.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L21 8H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="21" r="1.3" fill="currentColor"/><circle cx="17" cy="21" r="1.3" fill="currentColor"/></svg>
+        <span class="cart__count">0</span>
+      </a>
+    </div>
+
+    <button class="nav__burger" aria-label="Отваряне на менюто">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .announcement {
+    background: var(--color-dark);
+    color: #f4ece7;
+  }
+  .announcement p {
+    margin: 0;
+    text-align: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    padding: 9px 0;
+    text-transform: uppercase;
+  }
+
+  .nav {
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 40;
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    gap: 24px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+  .logo__meta {
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--color-text-soft);
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+  .logo__script {
+    font-family: var(--font-script);
+    font-size: 2.1rem;
+    color: var(--color-pink);
+    line-height: 1;
+  }
+  .logo__word {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.12em;
+    color: var(--color-dark);
+    display: block;
+    width: 100%;
+    margin-left: -1px;
+  }
+
+  .nav__links {
+    display: flex;
+    gap: 30px;
+    font-size: 0.86rem;
+    font-weight: 500;
+  }
+  .nav__links a {
+    transition: color 0.15s ease;
+  }
+  .nav__links a:hover {
+    color: var(--color-pink);
+  }
+
+  .nav__icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-dark);
+    display: flex;
+    position: relative;
+    padding: 4px;
+  }
+  .cart__count {
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    background: var(--color-pink);
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 700;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav__burger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .nav__burger span {
+    width: 22px;
+    height: 2px;
+    background: var(--color-dark);
+  }
+
+  @media (max-width: 900px) {
+    .nav__links {
+      display: none;
+    }
+    .nav__burger {
+      display: flex;
+    }
+  }
+</style>
